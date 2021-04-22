@@ -94,11 +94,6 @@ public class FilePicker {
      */
 
     public void pick(){
-        if(ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            if(listener != null)
-                listener.onResult(null);
-            return;
-        }
         activity.startActivity(new Intent().setClass(activity, FilePickerActivity.class));
     }
 
