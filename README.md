@@ -6,7 +6,7 @@ Easily pick file(s) from user's device.
 
 Implementation:
 
-    implementation 'com.github.FivesoftCode:FilePicker:1.0.0'
+    implementation 'com.github.FivesoftCode:FilePicker:1.0.2'
     
 Pick files:
 
