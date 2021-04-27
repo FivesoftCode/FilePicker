@@ -20,6 +20,7 @@ public class FilePicker {
     private static OnFilesPickedListener listener;
     private static String[] fileTypes = new String[]{"file/*"};
     private static String title = "Select file(s)";
+    private static String action = Intent.ACTION_GET_CONTENT;
     private static boolean allowMultipleFiles = false;
 
     private final Activity activity;
@@ -108,6 +109,18 @@ public class FilePicker {
         void onResult(@Nullable ArrayList<Uri> files);
     }
 
+    /**
+     * Sets action when calling Intent.
+     * By default it is set to {@link Intent#ACTION_GET_CONTENT}
+     * @param action The action id String.
+     * @return current FilePicker instance.
+     */
+
+    public FilePicker setAction(String action){
+        FilePicker.action = action;
+        return this;
+    }
+
     public static class FilePickerActivity extends Activity {
 
         @Override
@@ -117,7 +130,7 @@ public class FilePicker {
             intent.setType("*/*");
             intent.putExtra(Intent.EXTRA_MIME_TYPES, fileTypes);
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, allowMultipleFiles);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.setAction(action);
             startActivityForResult(Intent.createChooser(intent, title), PICKFILE_REQUEST_CODE);
         }
 
